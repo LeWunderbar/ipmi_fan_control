@@ -58,14 +58,14 @@ Temperature and Fan Speed Mapping (with 5°C increments):
 ## How to Use
 
 1. Ensure that `ipmitool` is installed and properly configured on your system.
-2. Place the script in an executable location, e.g., `/usr/local/bin/ipmi_fan_control.sh`.
+2. Place the script in an executable location, e.g., `/usr/local/bin/lenovo_x3650_m5_ipmi_fan_control.sh`.
 3. Make the script executable:
    ```bash
-   chmod +x /usr/local/bin/ipmi_fan_control.sh
+   chmod +x /usr/local/bin/lenovo_x3650_m5_ipmi_fan_control.sh
    ```
 4. Run the script:
    ```bash
-   ./ipmi_fan_control.sh
+   ./lenovo_x3650_m5_ipmi_fan_control.sh
    ```
 
 The script will continuously check the CPU temperature every 30 seconds and adjust the fan speeds based on predefined temperature-to-speed mappings.
