@@ -1,6 +1,6 @@
 # Lenovo System x3650 M5 - IPMI Fan Control Script
 
-This script automatically adjusts fan speeds based on CPU temperature readings from the server. It fetches temperature data via IPMI and uses a set of predefined temperature thresholds to set appropriate fan speeds. The fan speed is adjusted through IPMI commands to keep the system cool and quiet.
+This script automatically adjusts fan speeds based on CPU temperature readings from the server. It fetches temperature data via IPMI and uses a set of predefined temperature thresholds to set appropriate fan speeds. The fan speed is adjusted through IPMI commands to keep the system cool and quiet. It offers independent control for two CPU fan banks (CPU 1 and CPU 2).
 
 ## Prerequisites
 
@@ -34,15 +34,26 @@ To install these:
 - Calculates fan speeds based on temperature thresholds.
 - Adjusts fan speeds accordingly using raw IPMI commands.
 - Displays real-time status of the CPU temperatures and fan speeds.
+- Supports independent fan banks for CPU1 (fan bank 0x01) and CPU2 (fan bank 0x02).
+  
 
 ## Temperature and Fan Speed Mapping
 
 The script adjusts the fan speed in hexadecimal values based on the following temperature thresholds:
+Temperature and Fan Speed Mapping (with 5°C increments):
 
-- **Fan Speed** levels: 0%, 25%, 30%, 35%, 40%, 50%, 60%, 70%, 80%, 90%, and 100%.
-- **Temperature thresholds**: 40°C, 45°C, 50°C, 55°C, 60°C, 65°C, 70°C, 75°C, 80°C, 85°C, 90°C, 95°C, and 100°C.
-
-For example, if the CPU temperature is above 40°C but below 45°C, the fan speed is set to 25%. This process ensures that the system keeps the temperature within safe limits while avoiding unnecessary noise by adjusting fan speeds dynamically.
+- Below 40°C: 0% fan speed
+- 40°C-45°C: 25% fan speed
+- 45°C-50°C: 30% fan speed
+- 50°C-55°C: 35% fan speed
+- 55°C-60°C: 40% fan speed
+- 60°C-65°C: 50% fan speed
+- 65°C-70°C: 60% fan speed
+- 70°C-75°C: 70% fan speed
+- 75°C-80°C: 80% fan speed
+- 80°C-85°C: 90% fan speed
+- 85°C-90°C: 95% fan speed
+- Above 90°C: 100% fan speed
 
 ## How to Use
 
