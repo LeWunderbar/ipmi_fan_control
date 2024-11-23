@@ -26,7 +26,7 @@ For Unraid, the following plugins are required:
 To install these:
 1. Install the **NerdTools plugin** via the Unraid web GUI.
 2. Install **ipmitool** via the NerdTools plugin.
-3. Install **User Scripts** plugin via the Unraid web GUI to enable running the script.
+3. Install **User Scripts** plugin via the Unraid web GUI to enable running the script at the start of the array.
 
 ## Features
 
