@@ -1,17 +1,17 @@
 #!/bin/bash
 
 # Fan speed levels (hexadecimal values)
-FAN_SPEED_0=0x12    # 0% fan speed
-FAN_SPEED_25=0x30   # 25% fan speed
-FAN_SPEED_30=0x35   # 30% fan speed
-FAN_SPEED_35=0x3A   # 35% fan speed
-FAN_SPEED_40=0x40   # 40% fan speed
-FAN_SPEED_50=0x50   # 50% fan speed
-FAN_SPEED_60=0x60   # 60% fan speed
-FAN_SPEED_70=0x70   # 70% fan speed
-FAN_SPEED_80=0x80   # 80% fan speed
-FAN_SPEED_90=0x90   # 90% fan speed
-FAN_SPEED_100=0xFF  # 100% fan speed (maximum)
+FAN_SPEED_0=0x05     # 5% fan speed
+FAN_SPEED_25=0x0A    # 10% fan speed
+FAN_SPEED_30=0x0F    # 15% fan speed
+FAN_SPEED_35=0x14    # 20% fan speed
+FAN_SPEED_40=0x19    # 25% fan speed
+FAN_SPEED_50=0x1E    # 35% fan speed
+FAN_SPEED_60=0x23    # 40% fan speed
+FAN_SPEED_70=0x28    # 50% fan speed
+FAN_SPEED_80=0x32    # 70% fan speed
+FAN_SPEED_90=0x3C    # 90% fan speed
+FAN_SPEED_100=0x46   # 100% fan speed
 
 # Temperature thresholds (degrees Celsius)
 TEMP_40=40
@@ -136,7 +136,7 @@ while true; do
 
     # Get temperatures for both CPUs
     CPU1_TEMP=$(get_cpu_temperature "CPU 1 Temp")
-    CPU2_TEMP=$(get_cpu_temperature "CPU 2 Temp")
+    CPU2_TEMP=$(get_cpu_temperature "CPU 1 Temp")
 
     # Ensure valid temperature readings
     if [[ -z "$CPU1_TEMP" || -z "$CPU2_TEMP" ]]; then
@@ -147,12 +147,12 @@ while true; do
 
     # Calculate fan speeds for each bank in percentage
     FAN_SPEED_CPU1=$(calculate_fan_speed "$CPU1_TEMP")
-    FAN_SPEED_CPU2=$(calculate_fan_speed "$CPU2_TEMP")
+    FAN_SPEED_CPU2=$(calculate_fan_speed "$CPU1_TEMP")
 
     # Apply fan speeds to respective banks
     echo "Adjusting fan speeds based on temperature readings..."
     set_fan_speed 0x01 "$FAN_SPEED_CPU1"  # CPU1 -> Fan Bank CPU 1
-    set_fan_speed 0x02 "$FAN_SPEED_CPU2"  # CPU2 -> Fan Bank CPU 2
+    set_fan_speed 0x02 "$FAN_SPEED_CPU1"  # CPU2 -> Fan Bank CPU 2
 
     # Display status
     display_status "$CPU1_TEMP" "$CPU2_TEMP" "$FAN_SPEED_CPU1" "$FAN_SPEED_CPU2"

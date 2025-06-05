@@ -38,6 +38,7 @@ To install these:
   
 
 ## Temperature and Fan Speed Mapping
+### NOT ACCURATE ANYMORE! READ lenovo_x3650_m5_ipmi_fan_control.sh for more infomation!
 
 The script adjusts the fan speed in hexadecimal values based on the following temperature thresholds:
 Temperature and Fan Speed Mapping (with 5°C increments):
